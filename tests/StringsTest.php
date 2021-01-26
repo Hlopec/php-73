@@ -18,12 +18,22 @@ class StringsTest extends TestCase
         $this->assertEquals('Hello $foo', 'Hello $foo');
 
         // TODO "Hello ${foo}"
+        $this->assertEquals('Hello ${foo}', "Hello \${foo}");
 
         // TODO "Hello " . $foo
+        $this->assertEquals('"Hello " . $foo', '"Hello " . $foo');
 
         // TODO Heredoc
+        $this->assertEquals('Hello world', '<<<TEXT
+        "Hello $foo"
+        <<<TEXT
+        ');
 
         // TODO Nowdoc
+        $this->assertEquals('"Hello " . $foo', "'<<<TEXT'
+        \"Hello $foo\"
+        <<<TEXT"
+        );
     }
 
     /**
@@ -37,9 +47,13 @@ class StringsTest extends TestCase
 
         // ltrim — Strip whitespace (or other characters) from the beginning of a string
         // TODO to be implemented
+        $this->assertEquals('Hello', ltrim('         Hello'));
+        $this->assertEquals('Hello', ltrim('......Hello', '.'));
 
         // rtrim — Strip whitespace (or other characters) from the end of a string
         // TODO to be implemented
+        $this->assertEquals('Hello', rtrim('Hello         '));
+        $this->assertEquals('Hello', rtrim('Hello......', '.'));
 
         // strtoupper — Make a string uppercase
         $this->assertEquals('HELLO', strtoupper('hello'));
@@ -49,41 +63,55 @@ class StringsTest extends TestCase
 
         // ucfirst — Make a string's first character uppercase
         // TODO to be implemented
+        $this->assertEquals('Hello', ucfirst('hello'));
 
         // lcfirst — Make a string's first character lowercase
         // TODO to be implemented
+        $this->assertEquals('hELLO', lcfirst('HELLO'));
 
         // strip_tags — Strip HTML and PHP tags from a string
         // TODO to be implemented
+        $this->assertEquals('Hello', strip_tags('<div>Hello</div>'));
 
         // htmlspecialchars — Convert special characters to HTML entities
         // TODO to be implemented
+        $this->assertEquals('&lt;div&gt;Hello&lt;/div&gt;', htmlspecialchars("<div>Hello</div>", ENT_QUOTES));
 
         // addslashes — Quote string with slashes
         // TODO to be implemented
+        $this->assertEquals("H\'E\'L\'l\'O", addslashes("H'E'L'l'O"));
 
         // strcmp — Binary safe string comparison
         // TODO to be implemented
+        $this->assertEquals(true, strcmp('HELLO', 'Hello'));
 
         // strncasecmp — Binary safe case-insensitive string comparison of the first n characters
         // TODO to be implemented
+        $this->assertEquals(false, strncasecmp('HELLO', 'hello', 2));
 
         // str_replace — Replace all occurrences of the search string with the replacement string
         // TODO to be implemented
+        $this->assertEquals('HaEaLaLaO', str_replace(" ",'a' , 'H E L L O'));
 
         // strpos — Find the position of the first occurrence of a substring in a string
         // TODO to be implemented
+        $this->assertEquals(false, strpos('Hello world', 'Hell'));
 
         // strstr — Find the first occurrence of a string
         // TODO to be implemented
+        $this->assertEquals('He', strstr('HeLlo', 'L', true));
 
         // strrchr — Find the last occurrence of a character in a string
         // TODO to be implemented
+        $this->assertEquals('Llo', strrchr('HeLlo', 'L'));
 
         // substr — Return part of a string
         // TODO to be implemented
+        $this->assertEquals('H', substr('Hello', -5, 1));
 
         // sprintf — Return a formatted string
         // TODO to be implemented
+        $this->assertEquals('Hello 5 times one world!', sprintf('Hello %d times %s world!', 5, 'one'));
+
     }
 }

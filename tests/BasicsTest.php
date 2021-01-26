@@ -17,12 +17,15 @@ class BasicsTest extends TestCase
 
         // The function name, or {closure} for anonymous functions.
         // TODO __CLASS__
+        $this->assertEquals('BasicsTest', __CLASS__);
 
         // The class method name.
         // TODO __METHOD__
+        $this->assertEquals('BasicsTest::testMagicConstants', __METHOD__);
 
         // The name of the current namespace.
         // TODO __NAMESPACE__
+        $this->assertEquals('', __NAMESPACE__);
     }
 
     /**
@@ -36,17 +39,25 @@ class BasicsTest extends TestCase
 
         // Negative integers
         // TODO (bool) -1
+        $this->assertEquals(true, (bool) -1);
         // TODO (bool) -10
+        $this->assertEquals(true, (bool) -10);
         // TODO (bool) 0
+        $this->assertEquals(false, (bool) 0);
 
         // Strings
         // TODO (bool) ''
+        $this->assertEquals(false, (bool) '');
         // TODO (bool) 'false'
+        $this->assertEquals(true, (bool) 'false');
         // TODO (bool) 'not empty string'
+        $this->assertEquals(true, (bool) 'not empty string');
 
         // Arrays
         // TODO (bool) []
+        $this->assertEquals(false, (bool) []);
         // TODO (bool) [1, 2, 3]
+        $this->assertEquals(true, (bool) [1, 2, 3]);
 
         // Null
         // TODO (bool) null
@@ -65,15 +76,19 @@ class BasicsTest extends TestCase
 
         // Multiplication
         // TODO to be implemented
+        $this->assertEquals(4, 2 * 2);
 
         // Division
         // TODO to be implemented
+        $this->assertEquals(1, 2/2);
 
         // Modulo
         // TODO to be implemented
+        $this->assertEquals(2, 5 % 3);
 
         // Exponentiation
         // TODO to be implemented
+        $this->assertEquals(4, 2 ** 2);
     }
 
     /**
@@ -100,9 +115,15 @@ class BasicsTest extends TestCase
         $this->assertIsInt($foo);
 
         // TODO $foo = $foo * 1.3;
+        $foo = $foo * 1.3;
+        $this->assertIsFloat($foo);
 
         // TODO $foo = 5 * (int) '10 Little Piggies';
+        $foo = 5 * (int) '10 Little Piggies';
+        $this->assertIsInt($foo);
 
         // TODO $foo = 5 * (int) '10 Small Pigs';
+        $foo = 5 * (int) '10 Small Pigs';
+        $this->assertIsInt($foo);
     }
 }
