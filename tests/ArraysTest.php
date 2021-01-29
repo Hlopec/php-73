@@ -145,31 +145,32 @@ class ArraysTest extends TestCase
         // sort — Sort an array
         // TODO to be implemented
         $arr = [1, 5, 3, 2, 4];
-//        $this->assertEquals([1, 2, 3, 4, 5], sort($arr));
+        $this->assertEquals(true, sort($arr));
 
         // rsort — Sort an array in reverse order
         // TODO to be implemented
-//        $this->assertEquals([5, 4, 3, 2, 1], rsort($arr));
+        $this->assertEquals(true, rsort($arr));
 
         // ksort — Sort an array by key
         // TODO to be implemented
-//        $this->assertEquals([0, 1, 2, 3, 4], ksort($arr));
+        $this->assertEquals(true, ksort($arr));
 
         // usort — Sort an array by values using a user-defined comparison function
         // TODO to be implemented
-//        $this->assertEquals(?, usort($arr));
+        function sas(){}
+        $this->assertEquals(true, usort($arr, 'sas'));
 
         $arr = [1, 2];
         // array_push — Push one or more elements onto the end of array
         // array_pop — Pop the element off the end of array
         // TODO to be implemented
-//        $this->assertEquals([1, 2, 3], array_push($arr, "3"));
-//        $this->assertEquals([1], array_pop($arr));
+        $this->assertEquals(true, array_push($arr, 3));
+        $this->assertEquals(true, array_pop($arr));
 
         // array_shift — Shift an element off the beginning of array
         // array_unshift — Prepend one or more elements to the beginning of an array
         // TODO to be implemented
-//        $this->assertEquals([2], array_shift($arr));
-//        $this->assertEquals([1, 2], array_unshift($arr, 1));
+        $this->assertEquals(true, array_shift($arr));
+        $this->assertEquals(true, array_unshift($arr, 1));
     }
 }
